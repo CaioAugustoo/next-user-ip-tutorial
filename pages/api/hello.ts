@@ -8,6 +8,8 @@ const cors = Cors({
 
 type Data = {
   ip: string;
+  forwardedFor: string;
+  forwardedForVercel: string;
 };
 
 // Helper method to wait for a middleware to execute before continuing
@@ -34,12 +36,13 @@ export default async function handler(
 ) {
   await runMiddleware(req, res, cors);
 
-  let ip = req.headers["x-real-ip"] as string;
+  let ip = "";
 
   const forwardedFor = req.headers["x-forwarded-for"] as string;
-  if (!ip && forwardedFor) {
+  const forwardedForVercel = req.headers["x-vercel-forwarded-for"] as string;
+  if (forwardedFor) {
     ip = forwardedFor?.split(",").at(0) ?? "Unknown";
   }
 
-  res.status(200).json({ ip: ip });
+  res.status(200).json({ ip: ip, forwardedFor, forwardedForVercel });
 }
