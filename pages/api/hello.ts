@@ -40,6 +40,7 @@ export default async function handler(
 
   const forwardedFor = req.headers["x-forwarded-for"] as string;
   const forwardedForVercel = req.headers["x-vercel-forwarded-for"] as string;
+
   if (forwardedFor) {
     ip = forwardedFor?.split(",").at(0) ?? "Unknown";
   }
