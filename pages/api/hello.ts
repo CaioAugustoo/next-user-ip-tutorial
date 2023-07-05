@@ -3,7 +3,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 
 const cors = Cors({
   methods: ["GET"],
-  origin: "https://bot-voting.vercel.app/",
+  origin: "*",
 });
 
 type Data = {
