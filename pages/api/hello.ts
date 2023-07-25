@@ -2,8 +2,9 @@ import Cors from "cors";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 const cors = Cors({
-  methods: ["GET"],
+  methods: ["GET, OPTIONS"],
   origin: "*",
+  allowedHeaders: ["Content-Type", "Authorization"],
 });
 
 type Data = {
