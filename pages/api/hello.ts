@@ -3,8 +3,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 
 const cors = Cors({
   methods: ["GET"],
-  origin: ["https://9n1s0wzxawdmnt9e7qjqrg1ggskfmw.ext-twitch.tv"],
-  allowedHeaders: ["Content-Type", "Authorization"],
+  origin: ["*"],
 });
 
 type Data = {
